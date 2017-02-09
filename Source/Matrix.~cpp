@@ -1,0 +1,222 @@
+//------------------------------------------------------------------------------
+//
+// Module 08932 : Object-Oriented Software Engineering
+// Mathematics Library Assessment
+// Matrix.cpp
+//
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// include files
+
+#include <iostream>
+#include <cmath>
+#pragma hdrstop
+#include "Matrix.h"
+
+//------------------------------------------------------------------------------
+// namespace
+
+using namespace std;
+using namespace ObjectOriented;
+
+//------------------------------------------------------------------------------
+// defines
+
+// #define TESTING
+
+//------------------------------------------------------------------------------
+// default constructor constructs an identity matrix
+Matrix::Matrix() {
+    for (int i = 0; i < DIM; ++i) {
+        for (int j = 0; j < DIM; ++j) {
+            _m[i][j] = (i == j) ? 1.0 : 0.0;
+        }
+    }
+}
+
+//------------------------------------------------------------------------------
+// copy constructor
+Matrix::Matrix(const Matrix &m) {
+    for (int i = 0; i < DIM; ++i) {
+        for (int j = 0; j < DIM; ++j) {
+            _m[i][j] = m._m[i][j];
+        }
+    }
+}
+
+//------------------------------------------------------------------------------
+// copy assignment
+Matrix &Matrix::operator=(const Matrix &m) {
+    if (this != &m) {
+        for (int i = 0; i < DIM; ++i) {
+            for (int j = 0; j < DIM; ++j) {
+                _m[i][j] = m._m[i][j];
+            }
+        }
+    }
+    return *this;   
+}
+
+//------------------------------------------------------------------------------
+// destructor
+Matrix::~Matrix() {
+}
+
+//------------------------------------------------------------------------------
+// pre-multiply this matrix by another matrix
+Matrix &Matrix::preMultiply(const Matrix &m) {
+    Matrix product;
+    for (int i = 0; i < DIM; ++i) {
+        for (int j = 0; j < DIM; ++j) {
+            product._m[i][j] = 0.0;
+            for (int k = 0; k < DIM; ++k) {
+                product._m[i][j] += m._m[i][k] * _m[k][j];
+            }
+        }
+    }
+    return *this = product;
+}
+
+//------------------------------------------------------------------------------
+// set this matrix to the identity matrix
+Matrix &Matrix::identity() {
+    for (int i = 0; i < DIM; ++i) {
+        for (int j = 0; j < DIM; ++j) {
+            _m[i][j] = (i == j) ? 1.0 : 0.0;
+        }
+    }
+    return *this;
+}
+
+//------------------------------------------------------------------------------
+// scale this matrix
+Matrix &Matrix::scale(double x, double y, double z) {
+    Matrix m;
+    m._m[X][X] = x;
+    m._m[Y][Y] = y;
+    m._m[Z][Z] = z;
+    return preMultiply(m);
+}
+
+//------------------------------------------------------------------------------
+// rotate this matrix about x-axis
+Matrix &Matrix::rotateX(double angle) {
+    Matrix m;
+    double c = cos(angle);
+    double s = sin(angle);
+    m._m[Y][Y] = c;
+    m._m[Y][Z] = -s;
+    m._m[Z][Y] = s;
+    m._m[Z][Z] = c;
+    return preMultiply(m);
+}
+
+//------------------------------------------------------------------------------
+// rotate this matrix about y-axis
+Matrix &Matrix::rotateY(double angle) {
+    Matrix m;
+    double c = cos(angle);
+    double s = sin(angle);
+    m._m[Z][Z] = c;
+    m._m[Z][X] = -s;
+    m._m[X][Z] = s;
+    m._m[X][X] = c;
+    return preMultiply(m);
+}
+
+//------------------------------------------------------------------------------
+// rotate this matrix about z-axis
+Matrix &Matrix::rotateZ(double angle) {
+    Matrix m;
+    double c = cos(angle);
+    double s = sin(angle);
+    m._m[X][X] = c;
+    m._m[X][Y] = -s;
+    m._m[Y][X] = s;
+    m._m[Y][Y] = c;
+    return preMultiply(m);
+}
+
+//------------------------------------------------------------------------------
+// rotate this matrix about an axis
+Matrix &Matrix::rotate(double angle, double x, double y, double z) {
+    Matrix m;
+    double length = sqrt(x * x + y * y + z * z);
+    double rlength = (length == 0.0) ? 1.0 : 1.0 / length;
+    x *= rlength;
+    y *= rlength;
+    z *= rlength;
+    double c = cos(angle);
+    double s = sin(angle);
+    m._m[X][X] = c + (1.0 - c) * x * x;
+    m._m[X][Y] = (1.0 - c) * y * x - s * z;
+    m._m[X][Z] = (1.0 - c) * z * x + s * y;
+    m._m[Y][X] = (1.0 - c) * x * y + s * z;
+    m._m[Y][Y] = c + (1.0 - c) * y * y;
+    m._m[Y][Z] = (1.0 - c) * z * y - s * x;
+    m._m[Z][X] = (1.0 - c) * x * z - s * y;
+    m._m[Z][Y] = (1.0 - c) * y * z + s * x;
+    m._m[Z][Z] = c + (1.0 - c) * z * z;
+    return preMultiply(m);
+}
+
+//------------------------------------------------------------------------------
+// translate this matrix
+Matrix &Matrix::translate(double x, double y, double z) {
+    Matrix m;
+    m._m[X][W] = x;
+    m._m[Y][W] = y;
+    m._m[Z][W] = z;
+    return preMultiply(m);
+}
+
+//------------------------------------------------------------------------------
+// stream out from this matrix
+void Matrix::output(ostream &out) const {
+    for (int i = 0; i < DIM; ++i) {
+        out << (i == 0 ? "(" : "") << "(";
+        for (int j = 0; j < DIM; ++j) {
+            out << _m[i][j] << (j < DIM - 1 ? "," : ")");
+        }
+        out << (i < DIM - 1 ? "," : ")");
+    }
+}
+
+//------------------------------------------------------------------------------
+// stream in to this matrix
+void Matrix::input(istream &in) {
+    char separator;
+    for (int i = 0; i < DIM; ++i) {
+        if (i == 0) {
+            in >> separator;
+        }
+        in >> separator;
+        for (int j = 0; j < DIM; ++j) {
+            in >> _m[i][j] >> separator;
+        }
+        in >> separator;
+    }
+}
+
+//------------------------------------------------------------------------------
+// namespace definition
+namespace ObjectOriented {
+
+    //------------------------------------------------------------------------------
+    // stream out << operator
+    ostream &operator<<(ostream &out, const Matrix &m) {
+        m.output(out);
+        return out;
+    }
+
+    //------------------------------------------------------------------------------
+    // stream in >> operator
+    istream &operator>>(istream &in, Matrix &m) {
+        m.input(in);
+        return in;
+    }
+
+} // ObjectOriented
+
+//------------------------------------------------------------------------------

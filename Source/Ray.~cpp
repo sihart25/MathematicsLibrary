@@ -1,0 +1,168 @@
+//------------------------------------------------------------------------------
+//
+// Module 08932 : Object-Oriented Software Engineering
+// Mathematics Library Assessment
+// Ray.cpp
+//
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// include files
+
+#include <iostream>
+#include <cmath>
+#pragma hdrstop
+#include "Ray.h"
+
+//------------------------------------------------------------------------------
+// namespace
+
+using namespace std;
+using namespace ObjectOriented;
+
+//------------------------------------------------------------------------------
+// defines
+
+// #define TESTING
+
+//------------------------------------------------------------------------------
+// default constructor from a position vector and a direction vector
+Ray::Ray(const Vector &position, const Vector &direction) : 
+    _position(position), _direction(direction) {
+    normalize();
+}
+
+//------------------------------------------------------------------------------
+// copy constructor
+Ray::Ray(const Ray &r) : 
+    _position(r.position()), _direction(r.direction()) {
+}
+
+//------------------------------------------------------------------------------
+// copy assignment
+Ray &Ray::operator=(const Ray &r) {
+    if (this != &r) {
+        _position = r.position();
+        _direction = r.direction();
+    }
+    return *this;   
+}
+
+//------------------------------------------------------------------------------
+// destructor
+Ray::~Ray() {
+}
+
+//------------------------------------------------------------------------------
+// distance from this ray to a point
+double Ray::distance(const Vector &vector) const {
+    return (vector - position()).crossProduct(direction()).magnitude();
+}
+
+//------------------------------------------------------------------------------
+// perpendicular to this ray and another ray
+Vector Ray::perpendicular(const Ray &ray) const {
+    return Vector(direction().crossProduct(ray.direction()));
+}
+
+//------------------------------------------------------------------------------
+// distance from this ray to another ray
+double Ray::distance(const Ray &ray) const {
+    Vector normal(perpendicular(ray));
+    if (normal.magnitude2() <= EPSILON) { // near parallel rays
+        return (ray.position() - position()).crossProduct(direction()).magnitude();
+    }
+    else {
+        normal.normalize();
+        return fabs((ray.position() - position()).dotProduct(normal));
+    }
+}
+
+//------------------------------------------------------------------------------
+// intersection of this ray with another ray
+Vector Ray::intersection(const Ray &ray) const {
+    Vector normal(perpendicular(ray));
+    if (normal.magnitude2() <= EPSILON) { // near parallel rays
+        return position() + 0.5 * (ray.position() - position());
+    }
+    else {
+        normal.normalize();
+        double length = (ray.position() - position()).dotProduct(normal); // signed length
+        Ray coplanar(ray.position() - length * normal, ray.direction());
+        Vector projection = (coplanar.position() - position()).crossProduct(direction()).crossProduct(direction());
+        double distanceA = (coplanar.position() - position()).dotProduct(projection);
+        double distanceB = (coplanar.position() + coplanar.direction() - position()).dotProduct(projection);
+        return coplanar.position() + distanceA / (distanceA - distanceB) * coplanar.direction() + 0.5 * length * normal;
+    }
+}
+
+//------------------------------------------------------------------------------
+// normalize this ray
+Ray &Ray::normalize() {
+    _direction.normalize();
+    return *this;
+}
+
+//------------------------------------------------------------------------------
+// unit vector of this ray
+Ray Ray::unit() const {
+    return Ray(position(), direction().unit());
+}
+
+//------------------------------------------------------------------------------
+// negate this ray
+Ray &Ray::negate() {
+    _direction.negate();
+    return *this;
+}
+
+//------------------------------------------------------------------------------
+// negative - operator
+Ray Ray::operator-() const {
+    return Ray(position(), -direction());
+}
+
+//------------------------------------------------------------------------------
+// pre-multiply this ray by a matrix
+Ray &Ray::preMultiply(const Matrix &m) {
+    _position.preMultiply(m);
+    _direction.preMultiply(m);
+    normalize();
+    return *this;
+}
+
+//------------------------------------------------------------------------------
+// stream out from this ray
+void Ray::output(ostream &out) const {
+    out << "(" << position() << "," << direction() << ")";
+}
+
+//------------------------------------------------------------------------------
+// stream in to this ray
+void Ray::input(istream &in) {
+    char parenthesis, comma;
+    in >> parenthesis >> _position >> comma >> _direction >> parenthesis;
+    normalize();
+}
+
+//------------------------------------------------------------------------------
+// namespace definition
+namespace ObjectOriented {
+
+    //------------------------------------------------------------------------------
+    // stream out << operator
+    ostream &operator<<(ostream &out, const Ray &ray) {
+        ray.output(out);
+        return out;
+    }
+
+    //------------------------------------------------------------------------------
+    // stream in >> operator
+    istream &operator>>(istream &in, Ray &ray) {
+        ray.input(in);
+        return in;
+    }
+
+} // ObjectOriented
+
+//------------------------------------------------------------------------------

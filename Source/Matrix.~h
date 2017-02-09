@@ -1,0 +1,74 @@
+//------------------------------------------------------------------------------
+//
+// Module 08932 : Object-Oriented Software Engineering
+// Mathematics Library Assessment
+// Matrix.h
+//
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// include guard
+
+#ifndef Matrix_h
+#define Matrix_h
+
+//------------------------------------------------------------------------------
+// include files
+
+#include <iostream>
+#pragma hdrstop
+#include "Vector.h"
+#include "Ray.h"
+
+//------------------------------------------------------------------------------
+// namespace
+
+using namespace std;
+
+//------------------------------------------------------------------------------
+// namespace definition
+
+namespace ObjectOriented {
+
+    //------------------------------------------------------------------------------
+    // class definition
+
+    class Matrix {
+
+    public:
+
+        // default constructor produces an identity matrix
+        Matrix();
+	    Matrix(const Matrix &v);
+	    Matrix &operator=(const Matrix &v);
+	    ~Matrix();
+
+        friend Vector &Vector::preMultiply(const Matrix &m);
+        friend Ray &Ray::preMultiply(const Matrix &m);
+
+        Matrix &preMultiply(const Matrix &m);
+        Matrix &identity();
+        Matrix &scale(double x, double y, double z);
+        Matrix &rotateX(double angle);
+        Matrix &rotateY(double angle);
+        Matrix &rotateZ(double angle);
+        Matrix &rotate(double angle, double x, double y, double z);
+        Matrix &translate(double x, double y, double z);
+
+        void output(ostream &out) const;
+        void input(istream &in);
+
+        friend ostream &operator<<(ostream &out, const Matrix &m);
+        friend istream &operator>>(istream &in, Matrix &m);
+
+    private:
+
+        double _m[DIM][DIM];
+
+    };
+
+} // ObjectOriented
+
+#endif // Matrix_h
+
+//------------------------------------------------------------------------------

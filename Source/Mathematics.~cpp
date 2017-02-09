@@ -1,0 +1,226 @@
+//------------------------------------------------------------------------------
+//
+// Module 08932 : Object-Oriented Software Engineering
+// Mathematics Library Assessment
+// Mathematics.cpp
+//
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// include files
+
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <iomanip>
+#include <ctime>
+#pragma hdrstop
+#include "Vector.h"
+#include "Ray.h"
+#include "Matrix.h"
+
+//------------------------------------------------------------------------------
+// namespace
+
+using namespace std;
+using namespace ObjectOriented;
+
+//------------------------------------------------------------------------------
+// defines
+
+#define TESTING
+
+#ifdef TESTING
+
+#define PRINT(EXPRESSION) \
+    cout << left << setw(45) << #EXPRESSION << (EXPRESSION) << endl;
+
+#define TIME(EXPRESSION) \
+    start = clock(); \
+    for (i = 0; i < REPEATS; ++i) { \
+        EXPRESSION; \
+    } \
+    finish = clock(); \
+    cout << left << setw(45) << #EXPRESSION \
+         << (finish - start) / (double)CLOCKS_PER_SEC / (double)REPEATS << " seconds" << endl;
+
+#endif // TESTING
+
+//------------------------------------------------------------------------------
+// comstants
+
+namespace {
+    const int REPEATS = 10000000;
+}
+
+//------------------------------------------------------------------------------
+// main()
+
+int main(int argc, char **argv) {
+
+    #ifdef TESTING
+
+    cout << "**** Test Vector constructors ****" << endl;
+    Vector v1;
+    Vector v2(1, 2, 3);
+    Vector v3(4, 5, 6, 0);
+    Vector v4(v3);
+    Vector v5; v5 = v4;
+    PRINT(v1);
+    PRINT(v2);
+    PRINT(v3);
+    PRINT(v4);
+    PRINT(v5);
+    cout << endl;
+
+    cout << "**** Test Vector input stream ****" << endl;
+    istringstream vectorStream(string("(1,2,3,1)"));
+    Vector vA;
+    vectorStream >> vA;
+    Vector vB(9, 8, 7, 1);
+    Vector vC(9, 8, 7, 1);
+    PRINT(vA);
+    PRINT(vB);
+    PRINT(vC);
+    cout << endl;
+
+    cout << "**** Test Vector arithmetic ****" << endl;
+    PRINT(vC.add(vA, vB));
+    PRINT(vC.subtract(vA, vB));
+    PRINT(vA + vB);
+    PRINT(vA - vB);
+    PRINT(vA += vB);
+    PRINT(vA -= vB);
+    PRINT((vC = vA) += vB);
+    PRINT(vA * 0.5);
+    PRINT(0.5 * vA);
+    PRINT(vA / 2);
+    PRINT(vA *= 0.5);
+    PRINT(vA /= 0.5);
+    PRINT(vA.cross(vB));
+    PRINT(vA.dot(vB));
+    PRINT(vA.distance(vB));
+    PRINT(vA.magnitude());
+    PRINT(vA.unit());
+    PRINT(-vA);
+    PRINT(vA.normalize());
+    PRINT(vA.negate());
+    cout << endl;
+
+    cout << "**** Test Ray constructors ****" << endl;
+    Ray r1;
+    Ray r2(v2, v3);
+    Ray r3(r2);
+    Ray r4; r4 = r3;
+    PRINT(r1);
+    PRINT(r2);
+    PRINT(r3);
+    PRINT(r4);
+    cout << endl;
+
+    cout << "**** Test Ray input stream ****" << endl;
+    istringstream rayStream(string("((0,1,0,1),(1,0,0,0))"));
+    Ray rA;
+    rayStream >> rA;
+    Ray rB(Vector(1, 0, 0.5, 1), Vector(1, 1, 0, 0));
+    PRINT(rA);
+    PRINT(rB);
+    cout << endl;
+
+    cout << "**** Test Ray arithmetic ****" << endl;
+    PRINT(rA.distance(vB));
+    PRINT(rA.distance(rB));
+    PRINT(rA.intersection(rB));
+    PRINT(Vector(rA, rB));
+    PRINT(rA.unit());
+    PRINT(-rA);
+    PRINT(rA.normalize());
+    PRINT(rA.negate());
+    cout << endl;
+
+    cout << "**** Test Matrix constructors ****" << endl;
+    Matrix m1;
+    Matrix m2(m1);
+    Matrix m3; m3 = m2;
+    PRINT(m1);
+    PRINT(m2);
+    PRINT(m3);
+    cout << endl;
+
+    cout << "**** Test Matrix input stream ****" << endl;
+    istringstream matrixStream(string("((0,0,0,0),(1,1,1,1),(2,2,2,2),(0,0,0,1))"));
+    Matrix mA;
+    matrixStream >> mA;
+    PRINT(mA);
+    cout << endl;
+
+    cout << "**** Test Matrix arithmetic ****" << endl;
+    PRINT(vA.preMultiply(mA));
+    PRINT(rA.preMultiply(mA));
+    PRINT(mA.preMultiply(mA));
+    PRINT(mA.identity().scale(Vector(1, 2, 3)));
+    PRINT(mA.identity().rotateX(30));
+    PRINT(mA.identity().rotateY(30));
+    PRINT(mA.identity().rotateZ(30));
+    PRINT(mA.identity().rotate(120, Vector(1, 1, 1)));
+    PRINT(mA.identity().translate(Vector(1, 2, 3)));
+    cout << endl;
+
+    int i;
+    clock_t start;
+    clock_t finish;
+
+    cout << "**** Time Vector arithmetic ****" << endl;
+    TIME(vC.add(vA, vB));
+    TIME(vC.subtract(vA, vB));
+    TIME(vA + vB);
+    TIME(vA - vB);
+    TIME(vA += vB);
+    TIME(vA -= vB);
+    TIME((vC = vA) += vB);
+    TIME(vA * 0.5);
+    TIME(0.5 * vA);
+    TIME(vA / 2);
+    TIME(vA *= 0.5);
+    TIME(vA /= 0.5);
+    TIME(vA.cross(vB));
+    TIME(vA.dot(vB));
+    TIME(vA.distance(vB));
+    TIME(vA.magnitude());
+    TIME(vA.unit());
+    TIME(-vA);
+    TIME(vA.normalize());
+    TIME(vA.negate());
+    cout << endl;
+
+    cout << "**** Time Ray arithmetic ****" << endl;
+    TIME(rA.distance(vB));
+    TIME(rA.distance(rB));
+    TIME(rA.intersection(rB));
+    TIME(Vector(rA, rB));
+    TIME(rA.unit());
+    TIME(-rA);
+    TIME(rA.normalize());
+    TIME(rA.negate());
+    cout << endl;
+
+    cout << "**** Time Matrix arithmetic ****" << endl;
+    TIME(vA.preMultiply(mA));
+    TIME(rA.preMultiply(mA));
+    TIME(mA.preMultiply(mA));
+    TIME(mA.identity());
+    TIME(mA.scale(Vector(1, 2, 3)));
+    TIME(mA.rotateX(30));
+    TIME(mA.rotateY(30));
+    TIME(mA.rotateZ(30));
+    TIME(mA.rotate(120, Vector(1, 1, 1)));
+    TIME(mA.translate(Vector(1, 2, 3)));
+    cout << endl;
+
+    #endif // TESTING
+
+    char ch; cin.get(ch);
+    return 0;
+}
+
+//------------------------------------------------------------------------------

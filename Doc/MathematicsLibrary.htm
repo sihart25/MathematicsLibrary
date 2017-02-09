@@ -1,0 +1,421 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0065)http://www2.dcs.hull.ac.uk/msc/08932/Vector%20Assessment%2000.htm -->
+<HTML xmlns="http://www.w3.org/TR/REC-html40" xmlns:o = 
+"urn:schemas-microsoft-com:office:office" xmlns:w = 
+"urn:schemas-microsoft-com:office:word"><HEAD><TITLE>Object Oriented software engineering</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content=Word.Document name=ProgId>
+<META content="MSHTML 5.50.4134.600" name=GENERATOR>
+<META content="Microsoft Word 9" name=Originator><LINK 
+href="./Vector%20Assessment%2000_files/filelist.xml" rel=File-List><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Warren Viant</o:Author>
+  <o:LastAuthor>Warren Viant</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>33</o:TotalTime>
+  <o:LastPrinted>1999-10-21T16:01:00Z</o:LastPrinted>
+  <o:Created>2000-10-09T10:13:00Z</o:Created>
+  <o:LastSaved>2000-10-09T10:13:00Z</o:LastSaved>
+  <o:Pages>2</o:Pages>
+  <o:Words>405</o:Words>
+  <o:Characters>2312</o:Characters>
+  <o:Company>Dept. of Computer Science, University of Hull</o:Company>
+  <o:Lines>19</o:Lines>
+  <o:Paragraphs>4</o:Paragraphs>
+  <o:CharactersWithSpaces>2839</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:PrintFractionalCharacterWidth/>
+  <w:HideSpellingErrors/>
+  <w:DoNotHyphenateCaps/>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:DoNotShadeFormData/>
+  <w:Compatibility>
+   <w:PrintColBlack/>
+   <w:ShowBreaksInFrames/>
+   <w:SuppressSpBfAfterPgBrk/>
+   <w:SwapBordersFacingPages/>
+   <w:ConvMailMergeEsc/>
+   <w:UsePrinterMetrics/>
+   <w:WW6BorderRules/>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:NoSpaceRaiseLower/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><![endif]-->
+<STYLE>@font-face {
+	font-family: Wingdings;
+}
+@page Section1 {size: 595.3pt 841.9pt; margin: 1.0in 1.25in 1.0in 1.25in; mso-header-margin: .5in; mso-footer-margin: .5in; mso-footer: url("./Vector%20Assessment%2000_files/header.htm") f1; mso-paper-source: 0; }
+P.MsoNormal {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-style-parent: ""; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB
+}
+LI.MsoNormal {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-style-parent: ""; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB
+}
+DIV.MsoNormal {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-style-parent: ""; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB
+}
+H1 {
+	FONT-SIZE: 14pt; MARGIN: 12pt 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-bidi-font-weight: normal; mso-bidi-font-size: 10.0pt; mso-style-parent: Normal1; mso-pagination: widow-orphan; mso-ansi-language: EN-GB; mso-style-next: Normal1; mso-outline-level: 1; mso-font-kerning: 0pt
+}
+H2 {
+	FONT-SIZE: 10pt; MARGIN: 6pt 0in 0pt 0.2in; FONT-FAMILY: "Times New Roman"; mso-bidi-font-weight: normal; mso-style-parent: Normal2; mso-pagination: widow-orphan; mso-ansi-language: EN-GB; mso-style-next: Normal2; mso-outline-level: 2
+}
+H3 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 0.4in; FONT-FAMILY: "Times New Roman"; mso-bidi-font-weight: normal; mso-style-parent: Normal3; mso-pagination: widow-orphan; mso-ansi-language: EN-GB; mso-style-next: Normal3; mso-outline-level: 3
+}
+P.MsoNormalIndent {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 35.4pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB
+}
+LI.MsoNormalIndent {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 35.4pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB
+}
+DIV.MsoNormalIndent {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 35.4pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB
+}
+P.MsoHeader {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: center 207.65pt right 415.3pt
+}
+LI.MsoHeader {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: center 207.65pt right 415.3pt
+}
+DIV.MsoHeader {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: center 207.65pt right 415.3pt
+}
+P.MsoFooter {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: center 207.65pt right 415.3pt
+}
+LI.MsoFooter {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: center 207.65pt right 415.3pt
+}
+DIV.MsoFooter {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: center 207.65pt right 415.3pt
+}
+P.Normal1 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; mso-style-name: Normal1
+}
+LI.Normal1 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; mso-style-name: Normal1
+}
+DIV.Normal1 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; mso-style-name: Normal1
+}
+P.Normal2 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 0.2in; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; mso-style-name: Normal2
+}
+LI.Normal2 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 0.2in; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; mso-style-name: Normal2
+}
+DIV.Normal2 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 0.2in; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; mso-style-name: Normal2
+}
+P.Normal3 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 0.4in; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; mso-style-name: Normal3
+}
+LI.Normal3 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 0.4in; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; mso-style-name: Normal3
+}
+DIV.Normal3 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 0.4in; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; mso-style-name: Normal3
+}
+P.Program {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: 14.2pt 28.35pt 42.55pt 56.7pt 70.9pt 85.05pt 99.25pt 113.4pt 127.6pt 141.75pt; mso-style-name: Program
+}
+LI.Program {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: 14.2pt 28.35pt 42.55pt 56.7pt 70.9pt 85.05pt 99.25pt 113.4pt 127.6pt 141.75pt; mso-style-name: Program
+}
+DIV.Program {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: 14.2pt 28.35pt 42.55pt 56.7pt 70.9pt 85.05pt 99.25pt 113.4pt 127.6pt 141.75pt; mso-style-name: Program
+}
+P.Program2 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 14.2pt; FONT-FAMILY: "Times New Roman"; mso-style-parent: Program; mso-pagination: widow-orphan lines-together; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: 14.2pt 28.35pt 42.55pt 56.7pt 70.9pt 85.05pt 99.25pt 113.4pt 127.6pt 141.75pt; mso-style-name: Program2
+}
+LI.Program2 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 14.2pt; FONT-FAMILY: "Times New Roman"; mso-style-parent: Program; mso-pagination: widow-orphan lines-together; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: 14.2pt 28.35pt 42.55pt 56.7pt 70.9pt 85.05pt 99.25pt 113.4pt 127.6pt 141.75pt; mso-style-name: Program2
+}
+DIV.Program2 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 14.2pt; FONT-FAMILY: "Times New Roman"; mso-style-parent: Program; mso-pagination: widow-orphan lines-together; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: 14.2pt 28.35pt 42.55pt 56.7pt 70.9pt 85.05pt 99.25pt 113.4pt 127.6pt 141.75pt; mso-style-name: Program2
+}
+P.Program3 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 28.35pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan lines-together; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: 14.2pt 28.35pt 42.55pt 56.7pt 70.9pt 85.05pt 99.25pt 113.4pt 127.6pt 141.75pt; mso-style-name: Program3
+}
+LI.Program3 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 28.35pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan lines-together; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: 14.2pt 28.35pt 42.55pt 56.7pt 70.9pt 85.05pt 99.25pt 113.4pt 127.6pt 141.75pt; mso-style-name: Program3
+}
+DIV.Program3 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 28.35pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan lines-together; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: 14.2pt 28.35pt 42.55pt 56.7pt 70.9pt 85.05pt 99.25pt 113.4pt 127.6pt 141.75pt; mso-style-name: Program3
+}
+P.Program1 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan lines-together; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: 14.2pt 28.35pt 42.55pt 56.7pt 70.9pt 85.05pt 99.25pt 113.4pt 127.6pt 141.75pt 155.95pt 170.1pt 184.3pt 198.45pt 212.65pt 3.15in 241.0pt 255.15pt 269.35pt 283.5pt 297.7pt 311.85pt 326.05pt 340.2pt 354.4pt 368.55pt 382.75pt 396.9pt 411.1pt; mso-style-name: Program1
+}
+LI.Program1 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan lines-together; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: 14.2pt 28.35pt 42.55pt 56.7pt 70.9pt 85.05pt 99.25pt 113.4pt 127.6pt 141.75pt 155.95pt 170.1pt 184.3pt 198.45pt 212.65pt 3.15in 241.0pt 255.15pt 269.35pt 283.5pt 297.7pt 311.85pt 326.05pt 340.2pt 354.4pt 368.55pt 382.75pt 396.9pt 411.1pt; mso-style-name: Program1
+}
+DIV.Program1 {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan lines-together; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: 14.2pt 28.35pt 42.55pt 56.7pt 70.9pt 85.05pt 99.25pt 113.4pt 127.6pt 141.75pt 155.95pt 170.1pt 184.3pt 198.45pt 212.65pt 3.15in 241.0pt 255.15pt 269.35pt 283.5pt 297.7pt 311.85pt 326.05pt 340.2pt 354.4pt 368.55pt 382.75pt 396.9pt 411.1pt; mso-style-name: Program1
+}
+P.BullettedList {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 14.2pt; TEXT-INDENT: -14.2pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: list .25in; mso-style-name: "Bulletted List"; mso-list: l2 level1 lfo5
+}
+LI.BullettedList {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 14.2pt; TEXT-INDENT: -14.2pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: list .25in; mso-style-name: "Bulletted List"; mso-list: l2 level1 lfo5
+}
+DIV.BullettedList {
+	FONT-SIZE: 10pt; MARGIN: 0in 0in 0pt 14.2pt; TEXT-INDENT: -14.2pt; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-ansi-language: EN-GB; tab-stops: list .25in; mso-style-name: "Bulletted List"; mso-list: l2 level1 lfo5
+}
+DIV.Section1 {
+	page: Section1
+}
+OL {
+	MARGIN-BOTTOM: 0in
+}
+UL {
+	MARGIN-BOTTOM: 0in
+}
+</STYLE>
+</HEAD>
+<BODY lang=EN-US style="tab-interval: .5in">
+<DIV class=Section1>
+<P class=Normal1 style="TEXT-ALIGN: center" align=center><B 
+style="mso-bidi-font-weight: normal"><SPAN lang=EN-GB 
+style="FONT-SIZE: 14pt; mso-bidi-font-size: 10.0pt">Object Oriented Software 
+Engineering<o:p></o:p></SPAN></B></P>
+<P class=MsoNormal style="TEXT-ALIGN: center" align=center><B 
+style="mso-bidi-font-weight: normal"><SPAN lang=EN-GB 
+style="FONT-SIZE: 14pt; mso-bidi-font-size: 10.0pt"><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></SPAN></B></P>
+<P class=MsoNormal style="TEXT-ALIGN: center" align=center><B 
+style="mso-bidi-font-weight: normal"><SPAN lang=EN-GB 
+style="FONT-SIZE: 14pt; mso-bidi-font-size: 10.0pt">Maths library 
+assessment<o:p></o:p></SPAN></B></P>
+<P class=MsoNormal style="TEXT-ALIGN: center" align=center><B 
+style="mso-bidi-font-weight: normal"><SPAN lang=EN-GB 
+style="FONT-SIZE: 14pt; mso-bidi-font-size: 10.0pt"><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></SPAN></B></P>
+<P class=MsoNormal style="TEXT-ALIGN: center" align=center><B 
+style="mso-bidi-font-weight: normal"><SPAN lang=EN-GB 
+style="FONT-SIZE: 14pt; mso-bidi-font-size: 10.0pt">9/10/99<o:p></o:p></SPAN></B></P>
+<H1><SPAN lang=EN-GB>Introduction</SPAN></H1>
+<P class=Normal1><SPAN lang=EN-GB>The aim of this exercise is to create a set of 
+classes that form the basis of a mathematical library.<SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>An object oriented design will be used 
+and the program written in C++.<SPAN style="mso-spacerun: yes">&nbsp; </SPAN>The 
+library will form a fundamental building block for future assessments, e.g. the 
+Ray Tracer and Ray Caster.</SPAN></P>
+<P class=Normal1><SPAN 
+lang=EN-GB><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></SPAN></P>
+<P class=Normal1><SPAN lang=EN-GB>The Learning outcomes associated with this 
+project are:</SPAN></P>
+<P class=Normal1 
+style="MARGIN-LEFT: 0.25in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Experience in the development of a set 
+of C++ classes</SPAN></P>
+<P class=Normal1 
+style="MARGIN-LEFT: 0.25in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Insight into the problems associated 
+with efficient code development in C++</SPAN></P>
+<P class=Normal1 
+style="MARGIN-LEFT: 0.25in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Reinforcement of vector and matrix 
+mathematics.</SPAN></P>
+<H1><SPAN lang=EN-GB>The problem</SPAN></H1>
+<P class=Normal1><SPAN lang=EN-GB>This exercise is divided into two parts, where 
+the second builds on the first.</SPAN></P>
+<P class=Normal1><SPAN 
+lang=EN-GB><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></SPAN></P>
+<P class=Normal1><SPAN lang=EN-GB>All your code should be well structured and 
+commented.<SPAN style="mso-spacerun: yes">&nbsp; </SPAN>Layout is important 
+being both consistent in style and naming conventions.</SPAN></P>
+<H2><SPAN lang=EN-GB>Part 1 - Vector class</SPAN></H2>
+<P class=Normal2><SPAN lang=EN-GB>Develop a class Vector that encapsulates the 
+behaviour of a 3D vector i.e. (3, 4, 5).<SPAN style="mso-spacerun: yes">&nbsp; 
+</SPAN>The vector class should contain at least the following 
+functionality:</SPAN></P>
+<P class=Normal2><I style="mso-bidi-font-style: normal"><SPAN 
+lang=EN-GB>Constructors<o:p></o:p></SPAN></I></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Three doubles</SPAN></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Two rays, where the intersection of two 
+rays becomes the new vector (see part 2)</SPAN></P>
+<P class=Normal2><I style="mso-bidi-font-style: normal"><SPAN 
+lang=EN-GB>Selectors<o:p></o:p></SPAN></I></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Individual component selector (e.g. x, 
+y, z)</SPAN></P>
+<P class=Normal2><I style="mso-bidi-font-style: normal"><SPAN 
+lang=EN-GB>Streaming out<o:p></o:p></SPAN></I></P>
+<P class=Normal2><I style="mso-bidi-font-style: normal"><SPAN 
+lang=EN-GB>Streaming in<o:p></o:p></SPAN></I></P>
+<P class=Normal2><I style="mso-bidi-font-style: normal"><SPAN 
+lang=EN-GB>Mathematics<o:p></o:p></SPAN></I></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Vector addition</SPAN></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Vector subtraction</SPAN></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Cross product</SPAN></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Dot product</SPAN></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Scalar multiplication</SPAN></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Distance - Distance between two 
+vectors</SPAN></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Magnitude - length of the 
+vector</SPAN></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Unit - makes the vector a unit 
+vector</SPAN></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Unary operator-() to invert the vector 
+(i.e. v = -1.0 * v )</SPAN></P>
+<H2><SPAN lang=EN-GB>Part 2 - Ray class</SPAN></H2>
+<P class=Normal2><SPAN lang=EN-GB>Develop a class Ray that encapsulates the 
+behaviour of an infinite 3D line or ray, i.e. a line without a start and en 
+end.<SPAN style="mso-spacerun: yes">&nbsp; </SPAN>The class should contain at 
+least the following functionality:</SPAN></P>
+<P class=Normal2><I style="mso-bidi-font-style: normal"><SPAN 
+lang=EN-GB>Constructors<o:p></o:p></SPAN></I></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Two vectors (one representing position, 
+the other direction)</SPAN></P>
+<P class=Normal2><I style="mso-bidi-font-style: normal"><SPAN 
+lang=EN-GB>Selectors<o:p></o:p></SPAN></I></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Component parts</SPAN></P>
+<P class=Normal2><I style="mso-bidi-font-style: normal"><SPAN 
+lang=EN-GB>Streaming in<o:p></o:p></SPAN></I></P>
+<P class=Normal2><I style="mso-bidi-font-style: normal"><SPAN 
+lang=EN-GB>Streaming out<o:p></o:p></SPAN></I></P>
+<P class=Normal2><I style="mso-bidi-font-style: normal"><SPAN 
+lang=EN-GB>Mathematics<o:p></o:p></SPAN></I></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Distance of a line to a 
+point</SPAN></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Distance of a line to a line 
+</SPAN></P>
+<P class=Normal2 
+style="MARGIN-LEFT: 0.45in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Unary operator-() to invert the line 
+(i.e. to invert the direction of the line)</SPAN></P>
+<P class=Normal2><SPAN 
+lang=EN-GB><![if !supportEmptyParas]><![endif]>&nbsp;<o:p></o:p></SPAN></P>
+<P class=Normal2><SPAN lang=EN-GB>Hint:</SPAN></P>
+<P class=Normal2><SPAN lang=EN-GB>Consider the ray as being formed from two 
+vectors.</SPAN></P>
+<H1><SPAN lang=EN-GB>Problem extensions</SPAN></H1>
+<P class=Normal1><SPAN lang=EN-GB>The following may be added to gain ‘bonus’ 
+marks:</SPAN></P>
+<P class=Normal1 
+style="MARGIN-LEFT: 0.25in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Integrate the matrix class, from the 
+exercises, into your vector and ray class library.<SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>Additional functionality will be 
+required to multiply a ray by a matrix and a vector by a matrix.</SPAN></P>
+<P class=Normal1 
+style="MARGIN-LEFT: 0.25in; TEXT-INDENT: -0.25in; mso-list: l0 level1 lfo1"><![if !supportLists]><SPAN 
+lang=EN-GB style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Additional, relevant, functionality in 
+all three classes.</SPAN></P>
+<H1><SPAN lang=EN-GB>Demonstration</SPAN></H1>
+<P class=MsoNormal><SPAN lang=EN-GB>A demonstration of the program may be 
+required.<SPAN style="mso-spacerun: yes">&nbsp; </SPAN>The demostration should 
+be created in such a way as to test all significant functionality.</SPAN></P>
+<H1><SPAN lang=EN-GB>Report</SPAN></H1>
+<P class=MsoNormal><SPAN lang=EN-GB>An overall project report is required.<SPAN 
+style="mso-spacerun: yes">&nbsp; </SPAN>This should include:</SPAN></P>
+<P class=BullettedList><![if !supportLists]><SPAN lang=EN-GB 
+style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>A statement of the problem AND what has 
+been accomplished</SPAN></P>
+<P class=BullettedList><![if !supportLists]><SPAN lang=EN-GB 
+style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>A brief description of any design 
+decisions</SPAN></P>
+<P class=BullettedList><![if !supportLists]><SPAN lang=EN-GB 
+style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Conclusions, problems, etc.</SPAN></P>
+<P class=BullettedList><![if !supportLists]><SPAN lang=EN-GB 
+style="FONT-FAMILY: Symbol">·<SPAN 
+style="FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+</SPAN></SPAN><![endif]><SPAN lang=EN-GB>Code listing</SPAN></P>
+<H1><SPAN lang=EN-GB>Deadline</SPAN></H1>
+<P class=MsoNormal><SPAN lang=EN-GB>Work must be posted in the “White box”, 
+outside of the Departmental Office, by: <B>9:30 am Monday 23rd October</B>.<B 
+style="mso-bidi-font-weight: normal"><o:p></o:p></B></SPAN></P></DIV></BODY></HTML>

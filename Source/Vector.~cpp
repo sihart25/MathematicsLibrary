@@ -1,0 +1,275 @@
+//------------------------------------------------------------------------------
+//
+// Module 08932 : Object-Oriented Software Engineering
+// Mathematics Library Assessment
+// Vector.cpp
+//
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// include files
+
+#include <iostream>
+#include <cmath>
+#pragma hdrstop
+#include "Vector.h"
+#include "Ray.h"
+#include "Matrix.h"
+
+//------------------------------------------------------------------------------
+// namespace
+
+using namespace std;
+using namespace ObjectOriented;
+
+//------------------------------------------------------------------------------
+// defines
+
+// #define TESTING
+
+//------------------------------------------------------------------------------
+// default constructor from three or four components
+Vector::Vector(double x, double y, double z, double w) : 
+    _x(_v[X]), _y(_v[Y]), _z(_v[Z]), _w(_v[W]) {
+    _x = x;
+    _y = y;
+    _z = z;
+    _w = w;
+}
+
+//------------------------------------------------------------------------------
+// another constructor from the intersection of two rays
+Vector::Vector(const Ray &ray1, const Ray &ray2) : 
+    _x(_v[X]), _y(_v[Y]), _z(_v[Z]), _w(_v[W]) {
+    *this = ray1.intersection(ray2);
+}
+
+//------------------------------------------------------------------------------
+// copy constructor
+Vector::Vector(const Vector &v) : 
+    _x(_v[X]), _y(_v[Y]), _z(_v[Z]), _w(_v[W]) {
+    _x = v.x();
+    _y = v.y();
+    _z = v.z();
+    _w = v.w();
+}
+
+//------------------------------------------------------------------------------
+// copy assignment
+Vector &Vector::operator=(const Vector &v) {
+    if (this != &v) {
+        _x = v.x();
+        _y = v.y();
+        _z = v.z();
+        _w = v.w();
+    }
+    return *this;   
+}
+
+//------------------------------------------------------------------------------
+// destructor
+Vector::~Vector() {
+}
+
+//------------------------------------------------------------------------------
+// add += operator
+Vector &Vector::operator+=(const Vector &v) {
+    _x += v.x();
+    _y += v.y();
+    _z += v.z();
+    _w += v.w();
+    return *this;
+}
+
+//------------------------------------------------------------------------------
+// add + operator
+Vector Vector::operator+(const Vector &v) const {
+    double vx = x() + v.x();
+    double vy = y() + v.y();
+    double vz = z() + v.z();
+    double vw = w() + v.w();
+    return Vector(vx, vy, vz, vw);
+}
+
+//------------------------------------------------------------------------------
+// subtract -= operator
+Vector &Vector::operator-=(const Vector &v) {
+    _x -= v.x();
+    _y -= v.y();
+    _z -= v.z();
+    _w -= v.w();
+    return *this;
+}
+
+//------------------------------------------------------------------------------
+// subtract - operator
+Vector Vector::operator-(const Vector &v) const {
+    double vx = x() - v.x();
+    double vy = y() - v.y();
+    double vz = z() - v.z();
+    double vw = w() - v.w();
+    return Vector(vx, vy, vz, vw);
+}
+
+//------------------------------------------------------------------------------
+// scalar multiply *= operator
+Vector &Vector::operator*=(double s) {
+    _x *= s;
+    _y *= s;
+    _z *= s;
+    return *this;
+}
+
+//------------------------------------------------------------------------------
+// scalar multiply * operator
+Vector Vector::operator*(double s) const {
+    double vx = x() * s;
+    double vy = y() * s;
+    double vz = z() * s;
+    double vw = w();
+    return Vector(vx, vy, vz, vw);
+}
+
+//------------------------------------------------------------------------------
+// scalar divide /= operator
+Vector &Vector::operator/=(double s) {
+    _x /= s;
+    _y /= s;
+    _z /= s;
+    return *this;
+}
+
+//------------------------------------------------------------------------------
+// scalar divide / operator
+Vector Vector::operator/(double s) const {
+    double vx = x() / s;
+    double vy = y() / s;
+    double vz = z() / s;
+    double vw = w();
+    return Vector(vx, vy, vz, vw);
+}
+
+//------------------------------------------------------------------------------
+// cross product between this vector and another vector
+Vector Vector::crossProduct(const Vector &v) const {
+    double vx = y() * v.z() - z() * v.y();
+    double vy = z() * v.x() - x() * v.z();
+    double vz = x() * v.y() - y() * v.x();
+    double vw = 0.0;
+    return Vector(vx, vy, vz, vw);
+}
+
+//------------------------------------------------------------------------------
+// dot product between this vector and another vector
+double Vector::dotProduct(const Vector &v) const {
+    return x() * v.x() + y() * v.y() + z() * v.z();
+}
+
+//------------------------------------------------------------------------------
+// distance from this vector to another vector
+double Vector::distance(const Vector &v) const {
+    return (v - *this).magnitude();
+}
+
+//------------------------------------------------------------------------------
+// magnitude of this vector
+double Vector::magnitude() const {
+    return sqrt(dotProduct(*this));
+}
+
+//------------------------------------------------------------------------------
+// magnitude squared of this vector
+double Vector::magnitude2() const {
+    return dotProduct(*this);
+}
+
+//------------------------------------------------------------------------------
+// normalize this vector
+Vector &Vector::normalize() {
+    double length = magnitude();
+    return *this /= ((length == 0.0) ? 1.0 : length);
+}
+
+//------------------------------------------------------------------------------
+// unit vector of this vector
+Vector Vector::unit() const {
+    double length = magnitude();
+    return *this / ((length == 0.0) ? 1.0 : length);
+}
+
+//------------------------------------------------------------------------------
+// negate this vector
+Vector &Vector::negate() {
+    _x = -x();
+    _y = -y();
+    _z = -z();
+    return *this;
+}
+
+//------------------------------------------------------------------------------
+// negative - operator
+Vector Vector::operator-() const {
+    double vx = -x();
+    double vy = -y();
+    double vz = -z();
+    double vw = w();
+    return Vector(vx, vy, vz, vw);
+}
+
+//------------------------------------------------------------------------------
+// pre-multiply this vector by a matrix
+Vector &Vector::preMultiply(const Matrix &m) {
+    Vector v(*this);
+    for (int i = 0; i < DIM; ++i) {
+        _v[i] = 0.0;
+        for (int j = 0; j < DIM; ++j) {
+            _v[i] += m._m[i][j] * v._v[j];
+        }
+    }
+    return *this;
+}
+
+//------------------------------------------------------------------------------
+// stream out from this vector
+void Vector::output(ostream &out) const {
+    out << "(" << x() << "," << y() << "," << z() << "," << w() << ")";
+}
+
+//------------------------------------------------------------------------------
+// stream in to this vector
+void Vector::input(istream &in) {
+    char parenthesis, comma;
+    in >> parenthesis >> _x >> comma >> _y >> comma >> _z >> comma >> _w >> parenthesis;
+}
+
+//------------------------------------------------------------------------------
+// namespace definition
+namespace ObjectOriented {
+
+    //------------------------------------------------------------------------------
+    // scalar multiply * operator
+    Vector operator*(double s, const Vector &v) {
+        double vx = s * v.x();
+        double vy = s * v.y();
+        double vz = s * v.z();
+        double vw = v.w();
+        return Vector(vx, vy, vz, vw);
+    }
+
+    //------------------------------------------------------------------------------
+    // stream out << operator
+    ostream &operator<<(ostream &out, const Vector &v) {
+        v.output(out);
+        return out;
+    }
+
+    //------------------------------------------------------------------------------
+    // stream in >> operator
+    istream &operator>>(istream &in, Vector &v) {
+        v.input(in);
+        return in;
+    }
+
+} // ObjectOriented
+
+//------------------------------------------------------------------------------

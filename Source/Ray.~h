@@ -1,0 +1,90 @@
+//------------------------------------------------------------------------------
+//
+// Module 08932 : Object-Oriented Software Engineering
+// Mathematics Library Assessment
+// Ray.h
+//
+//------------------------------------------------------------------------------
+
+//------------------------------------------------------------------------------
+// include guard
+
+#ifndef Ray_h
+#define Ray_h
+
+//------------------------------------------------------------------------------
+// include files
+
+#include <iostream>
+#pragma hdrstop
+#include "Vector.h"
+
+//------------------------------------------------------------------------------
+// namespace
+
+using namespace std;
+
+//------------------------------------------------------------------------------
+// namespace definition
+
+namespace ObjectOriented {
+
+    //------------------------------------------------------------------------------
+    // constants
+
+    const int EPSILON = 1.0e-12;
+
+    //------------------------------------------------------------------------------
+    // class definition
+
+    class Ray {
+
+    public:
+
+        // default constructor produces a ray positioned at the origin and directed down the negative z-axis
+        Ray(const Vector &position = Vector(0.0, 0.0, 0.0, 1.0), const Vector &direction = Vector(0.0, 0.0, -1.0, 0.0));
+	    Ray(const Ray &copy);
+	    Ray &operator=(const Ray &assign);
+	    ~Ray();
+
+        const Vector &position() const {return _position;}
+        const Vector &direction() const {return _direction;}
+
+        void setPosition(Vector position) {_position = position;}
+        void setDirection(Vector direction) {_direction = direction;}
+
+        void setStart(Vector start) {_position = start;}
+        void setFinish(Vector finish) {_direction = finish - position();}
+
+        double distance(const Vector &vector) const;
+        double distance(const Ray &ray) const;
+        Vector intersection(const Ray &ray) const;
+
+        Ray &normalize();
+        Ray unit() const;
+
+        Ray &negate();
+        Ray operator-() const;
+
+        Ray &preMultiply(const Matrix &m);
+
+        void output(ostream &out) const;
+        void input(istream &in);
+
+        friend ostream &operator<<(ostream &out, const Ray &ray);
+        friend istream &operator>>(istream &in, Ray &ray);
+
+    private:
+
+        Vector perpendicular(const Ray &ray) const;
+
+	    Vector _position;
+	    Vector _direction;
+
+    };
+
+} // ObjectOriented
+
+#endif // Ray_h
+
+//------------------------------------------------------------------------------
